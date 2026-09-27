@@ -281,11 +281,12 @@
     }
     .quote-panel.open { display: block; }
 
-    /* Thank You Section styling */
+    /* Thank You Section styling (Hidden by default) */
     .thank-you-card {
       border: 2px solid var(--gold-accent);
       background: linear-gradient(135deg, #f0f7f4, var(--white));
       text-align: center;
+      display: none; 
     }
 
     footer {
@@ -336,7 +337,7 @@
       <a href="https://www.facebook.com/people/Johns-Tree-Service/61594230819675/" target="_blank" rel="noopener" class="btn">Facebook</a>
     </div>
 
-    <!-- Thank You Section (Lands here after quote form submission) -->
+    <!-- Thank You Section (Hidden until quote form submission) -->
     <div class="card thank-you-card" id="anchor-thank-you">
       <h2 style="color: var(--green-dark); margin-bottom: 0.5rem;">Thank You For Your Time!</h2>
       <p style="font-size: 1.05rem; max-width: 600px; margin: 0.5rem auto 1.25rem; color: #333;">
@@ -441,7 +442,7 @@
         <input type="hidden" name="access_key" value="ae455f58-79aa-4dfb-8c69-cb560e6bf9dc">
         <input type="hidden" name="subject" value="FREE QUOTE & HEALTH ASSESSMENT REQUEST">
         <input type="hidden" name="from_name" value="John's BMB Tree Service Web Lead">
-        <!-- Redirects user directly to the thank you card section on submission -->
+        <!-- Redirects user back to anchor on submission -->
         <input type="hidden" name="redirect" value="https://johnsbmbtreeservice.github.io/#anchor-thank-you">
 
         <div>
@@ -510,6 +511,14 @@
     if(openPanelBtn) openPanelBtn.addEventListener('click', openPanel);
     if(closeBtn) closeBtn.addEventListener('click', closePanel);
     if(quoteBackdrop) quoteBackdrop.addEventListener('click', closePanel);
+
+    // Automatically reveal Thank You card if returning from a successful submission redirect
+    if (window.location.hash === '#anchor-thank-you') {
+      const thankYouCard = document.getElementById('anchor-thank-you');
+      if (thankYouCard) {
+        thankYouCard.style.display = 'block';
+      }
+    }
 
     // Instant Text Message Fallback Button Action
     document.getElementById('sms-btn').addEventListener('click', function() {
