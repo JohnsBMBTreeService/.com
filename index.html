@@ -71,6 +71,7 @@
       line-height: 1.6;
       color: var(--text);
       background: var(--cream);
+      scroll-behavior: smooth;
     }
 
     img { max-width: 100%; height: auto; display: block; }
@@ -280,6 +281,13 @@
     }
     .quote-panel.open { display: block; }
 
+    /* Thank You Section styling */
+    .thank-you-card {
+      border: 2px solid var(--gold-accent);
+      background: linear-gradient(135deg, #f0f7f4, var(--white));
+      text-align: center;
+    }
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -326,6 +334,20 @@
       <a href="tel:2282133019" class="btn">📞 Call (228) 213-3019</a>
       <button class="btn btn-gold" id="open-panel-btn-1">Request Free Quote</button>
       <a href="https://www.facebook.com/people/Johns-Tree-Service/61594230819675/" target="_blank" rel="noopener" class="btn">Facebook</a>
+    </div>
+
+    <!-- Thank You Section (Lands here after quote form submission) -->
+    <div class="card thank-you-card" id="anchor-thank-you">
+      <h2 style="color: var(--green-dark); margin-bottom: 0.5rem;">Thank You For Your Time!</h2>
+      <p style="font-size: 1.05rem; max-width: 600px; margin: 0.5rem auto 1.25rem; color: #333;">
+        We know your time is important. We’ve received your quote request and will be in touch shortly. 
+        <br><br>
+        While you're here, these beautiful people might not have long—please consider supporting or donating to causes that change lives every day:
+      </p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://www.woundedwarriorproject.org/" target="_blank" rel="noopener" class="btn btn-gold">Support Wounded Warrior Project</a>
+        <a href="https://www.stjude.org/" target="_blank" rel="noopener" class="btn btn-gold">Support St. Jude Children's Research</a>
+      </div>
     </div>
 
     <!-- Google Reviews Section -->
@@ -419,6 +441,8 @@
         <input type="hidden" name="access_key" value="ae455f58-79aa-4dfb-8c69-cb560e6bf9dc">
         <input type="hidden" name="subject" value="FREE QUOTE & HEALTH ASSESSMENT REQUEST">
         <input type="hidden" name="from_name" value="John's BMB Tree Service Web Lead">
+        <!-- Redirects user directly to the thank you card section on submission -->
+        <input type="hidden" name="redirect" value="https://johnsbmbtreeservice.github.io/#anchor-thank-you">
 
         <div>
           <label>Your Name *</label>
