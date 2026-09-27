@@ -180,10 +180,6 @@
       color: #fff;
     }
     .btn-sms:hover { background: #1ebe5d; }
-    
-    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div class="elfsight-app-61a60905-703f-47d7-b767-bb860e1ef311" data-elfsight-app-lazy></div>
 
     /* Service Areas */
     .area-tags {
@@ -328,18 +324,10 @@
           ⭐ Leave Us a Google Review
         </a>
       </div>
-      <div class="review-grid">
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>"Punctual, military precision, and cleaned up every branch before leaving."</p>
-          <small>— Local Resident, Biloxi</small>
-        </div>
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <p>"Gave us an honest assessment on an oak tree we thought was dying. Great arborist service!"</p>
-          <small>— Homeowner, Ocean Springs</small>
-        </div>
-      </div>
+      
+      <!-- Elfsight Google Reviews Widget -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-61a60905-703f-47d7-b767-bb860e1ef311" data-elfsight-app-lazy></div>
     </div>
 
     <!-- Non-Profit Donation & 15% Off Incentive -->
@@ -361,11 +349,9 @@
         Have photos of work we completed for you? Submit them here for review before we feature them on our site!
       </p>
       
-      <!-- Web3Forms Submission for Photo Uploads -->
-      <form class="custom-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="access_key" value="ae455f58-79aa-4dfb-8c69-cb560e6bf9dc">
-        <input type="hidden" name="subject" value="New Customer Before/After Photo Submission">
-        <input type="hidden" name="from_name" value="John's BMB Tree Service Website">
+      <!-- FormSubmit Integration (Free with Photo Upload Support) -->
+      <form class="custom-form" action="https://formsubmit.co/JohnsBMBTreeService@gmail.com" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="New Customer Before/After Photo Submission">
         
         <div>
           <label>Your Name *</label>
