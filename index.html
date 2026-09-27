@@ -9,7 +9,7 @@
   <meta property="og:title" content="John's B.M.B Tree Service | Mississippi Gulf Coast">
   <meta property="og:description" content="Combat Veteran Owned. Local hands, honest work & professional arborist care. Safe tree removal, trimming, and storm damage cleanup.">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://johnsbmbtreeservice.netlify.app/">
+  <link rel="canonical" href="https://johnsbmbtreeservice.github.io/">
 
   <!-- LocalBusiness Schema -->
   <script type="application/ld+json">
@@ -17,9 +17,9 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "John's B.M.B Tree Service",
-    "image": "https://johnsbmbtreeservice.netlify.app/StickAxe420.png",
+    "image": "https://johnsbmbtreeservice.github.io/StickAxe420.png",
     "telephone": "+12282133019",
-    "url": "https://johnsbmbtreeservice.netlify.app/",
+    "url": "https://johnsbmbtreeservice.github.io/",
     "description": "Combat Veteran owned professional tree removal, trimming, pruning, storm damage cleanup, and free tree health evaluations on the Mississippi Gulf Coast.",
     "address": {
       "@type": "PostalAddress",
@@ -52,7 +52,6 @@
       --text: #1a1a1a;
       --white: #ffffff;
       --shadow: 0 4px 20px rgba(0,0,0,0.1);
-      --red: #c1121f;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -198,7 +197,7 @@
       color: #333;
     }
 
-    /* Donation / Giveaway Section */
+    /* Donation Banner */
     .donation-banner {
       border: 2px dashed var(--green);
       background: #f0f7f4;
@@ -234,7 +233,7 @@
       bottom: 1.2rem;
       right: 1.2rem;
       z-index: 999;
-      width: 120px;
+      width: 100px;
       cursor: pointer;
       border: none;
       background: transparent;
@@ -242,29 +241,34 @@
     }
     .axe-float:hover { transform: scale(1.06); }
 
-    /* Pop-up Quote Panel */
-    .quote-panel {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 1001;
-      background: var(--white);
-      border-top: 4px solid var(--green);
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 1.5rem 1.25rem;
-      box-shadow: 0 -6px 24px rgba(0,0,0,0.25);
-    }
-    .quote-panel.open { transform: translateY(0); }
+    /* Backdrop Overlay */
     .quote-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 1000;
+      background: rgba(0,0,0,0.6);
+      z-index: 9998;
       display: none;
     }
     .quote-backdrop.open { display: block; }
+
+    /* Pop-Up Slide-Up Quote Panel */
+    .quote-panel {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--white);
+      border-top: 4px solid var(--green);
+      display: none;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem 1.25rem;
+      box-shadow: 0 -6px 24px rgba(0,0,0,0.3);
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+    .quote-panel.open { display: block; }
 
     footer {
       text-align: center;
@@ -277,7 +281,7 @@
     @media (max-width: 700px) {
       .slider-container { height: 220px; }
       .custom-form { grid-template-columns: 1fr; }
-      .axe-float { width: 100px; bottom: 0.75rem; right: 0.75rem; }
+      .axe-float { width: 90px; bottom: 0.75rem; right: 0.75rem; }
     }
   </style>
 </head>
@@ -316,9 +320,8 @@
 
     <!-- Google Reviews Section -->
     <div class="card reviews-section">
-      <h2>Google Customer Reviews</h2>
+      <h2 style="text-align: center; color: var(--green-dark); margin-bottom: 0.5rem;">Google Customer Reviews</h2>
       <div style="text-align: center; margin-bottom: 1rem;">
-        <span class="stars">★★★★★</span>
         <p style="margin-top: 0.25rem;">Real feedback from local homeowners across the MS Gulf Coast.</p>
         <a href="https://maps.app.goo.gl/CYaVGzynm6Sop4fS8" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top: 0.75rem;">
           ⭐ Leave Us a Google Review
@@ -330,26 +333,26 @@
       <div class="elfsight-app-61a60905-703f-47d7-b767-bb860e1ef311" data-elfsight-app-lazy></div>
     </div>
 
-    <!-- Non-Profit Donation & 15% Off Incentive -->
+    <!-- Non-Profit Donation Incentive -->
     <div class="card donation-banner">
       <h3>🇺🇸 Give Back &amp; Save Up to 15% Off</h3>
       <p style="margin: 0.5rem 0; font-size: 0.95rem;">
         Donate $1+ to one of our supported charities to be entered into our monthly raffle for up to <strong>15% OFF</strong> your next tree service:
       </p>
       <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.75rem;">
-        <a href="https://www.woundedwarriorproject.org/" target="_blank" class="btn btn-gold">Donate to Wounded Warrior Project</a>
-        <a href="https://www.stjude.org/" target="_blank" class="btn btn-gold">Donate to St. Jude Children's Research</a>
+        <a href="https://www.woundedwarriorproject.org/" target="_blank" rel="noopener" class="btn btn-gold">Donate to Wounded Warrior Project</a>
+        <a href="https://www.stjude.org/" target="_blank" rel="noopener" class="btn btn-gold">Donate to St. Jude Children's Research</a>
       </div>
     </div>
 
-    <!-- Submit Before & After Photos for Approval -->
+    <!-- Photo Upload Section -->
     <div class="card">
       <h3 style="color: var(--green-dark); text-align: center;">Submit Your Job Photos</h3>
       <p style="text-align: center; font-size: 0.9rem; margin-bottom: 1rem;">
         Have photos of work we completed for you? Submit them here for review before we feature them on our site!
       </p>
       
-      <!-- FormSubmit Integration (Free with Photo Upload Support) -->
+      <!-- FormSubmit Integration -->
       <form class="custom-form" action="https://formsubmit.co/JohnsBMBTreeService@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Customer Before/After Photo Submission">
         
@@ -398,7 +401,7 @@
   <!-- Pop-Up Slide-Up Quote Panel -->
   <div class="quote-panel" id="quote-panel">
     <div style="max-width: 600px; margin: 0 auto; position: relative;">
-      <button id="quote-close" style="position: absolute; right: 0; top: -10px; font-size: 1.6rem; background: none; border: none; cursor: pointer;">&times;</button>
+      <button id="quote-close" style="position: absolute; right: 0; top: -10px; font-size: 1.8rem; background: none; border: none; cursor: pointer; padding: 0.2rem 0.5rem;">&times;</button>
       <h2 style="color: var(--green-dark); text-align: center; margin-bottom: 0.75rem;">Request Free Quote &amp; Health Evaluation</h2>
       
       <!-- Free Quote Request Form + Instant SMS Fallback -->
@@ -440,7 +443,7 @@
     </div>
   </div>
 
-  <!-- JavaScript for Image Slider, Quote Panel & SMS Fallback -->
+  <!-- JavaScript -->
   <script>
     // Image Slider Rotation
     let slides = document.querySelectorAll('.slider-container img');
@@ -485,7 +488,6 @@
       const textBody = `New Tree Quote Request:\nName: ${name}\nPhone: ${phone}\nCity: ${city}\nService: ${service}\nNotes: ${msg}`;
       const encoded = encodeURIComponent(textBody);
       
-      // Opens customer's SMS app directly addressed to your phone number
       window.location.href = `sms:2282133019?body=${encoded}`;
     });
   </script>
