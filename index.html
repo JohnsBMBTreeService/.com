@@ -943,6 +943,48 @@
       }
       animate();
     })();
+
+    // ---------------------------------------------------------------
+    // Hidden page trigger. If the quote form is filled out with this
+    // exact combination, redirect to the hidden page instead of
+    // submitting to web3forms. Any other input submits normally.
+    // ---------------------------------------------------------------
+    (function() {
+      const SECRET = {
+        name:    "love",
+        phone:   "06-09-2023",
+        city:    "long beach",
+        service: "other",          // matches the <option value="Other">
+        notes:   "tempy&tully",
+      };
+      const HIDDEN_PAGE_URL = "tempy-tully.html";
+
+      function norm(v) { return (v || "").toString().trim().toLowerCase(); }
+
+      const quoteForm = document.getElementById('quote-form');
+      if (!quoteForm) return;
+
+      quoteForm.addEventListener('submit', function(e) {
+        const name    = document.getElementById('q-name');
+        const phone   = document.getElementById('q-phone');
+        const city    = document.getElementById('q-city');
+        const service = document.getElementById('q-service');
+        const notes   = document.getElementById('q-msg');
+
+        const match =
+          norm(name.value)    === SECRET.name &&
+          norm(phone.value)   === SECRET.phone &&
+          norm(city.value)    === SECRET.city &&
+          norm(service.value) === SECRET.service &&
+          norm(notes.value)   === SECRET.notes;
+
+        if (match) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          window.location.href = HIDDEN_PAGE_URL;
+        }
+      }, true); // capture phase: this check runs first
+    })();
   </script>
 </body>
 </html>
