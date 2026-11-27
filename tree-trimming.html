@@ -10,7 +10,7 @@
   <meta name="keywords" content="tree trimming Biloxi, tree pruning Gulfport, live oak trimming Ocean Springs, canopy thinning MS Gulf Coast, roof clearance tree trimming Mississippi, veteran tree service">
   <meta name="author" content="John's B.M.B Tree Service">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://johnsbmbtreeservice.github.io/tree-trimming.html">
+  <link rel="canonical" href="https://johnsbmbtreeservice.github.io/.com/tree-trimming.html">
 
   <!-- Local SEO / Geo -->
   <meta name="geo.region" content="US-MS">
@@ -20,10 +20,10 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://johnsbmbtreeservice.github.io/tree-trimming.html">
+  <meta property="og:url" content="https://johnsbmbtreeservice.github.io/.com/tree-trimming.html">
   <meta property="og:title" content="Tree Trimming & Pruning MS Gulf Coast | John's B.M.B Tree Service">
   <meta property="og:description" content="Combat Veteran owned & operated precision tree trimming, deadwood removal, and storm-prep pruning across the Mississippi Gulf Coast.">
-  <meta property="og:image" content="https://johnsbmbtreeservice.github.io/TreePics2.jpg">
+  <meta property="og:image" content="https://johnsbmbtreeservice.github.io/.com/TreePics1.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="John's B.M.B Tree Service">
 
@@ -32,12 +32,18 @@
   <meta name="format-detection" content="telephone=yes">
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJGDVFMMS9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-LJGDVFMMS9');
+    // Load Analytics only after the page itself has finished loading
+    addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LJGDVFMMS9';
+      s.async = true;
+      document.head.appendChild(s);
+    });
   </script>
 
   <!-- Service Schema -->
@@ -50,8 +56,8 @@
       "@type": "LocalBusiness",
       "name": "John's B.M.B Tree Service",
       "telephone": "+12282133019",
-      "url": "https://johnsbmbtreeservice.github.io/",
-      "image": "https://johnsbmbtreeservice.github.io/StickAxe420.png",
+      "url": "https://johnsbmbtreeservice.github.io/.com/",
+      "image": "https://johnsbmbtreeservice.github.io/.com/StickAxe420.png",
       "hasMap": "https://maps.app.goo.gl/CYaVGzynm6Sop4fS8"
     },
     "areaServed": [
@@ -81,9 +87,10 @@
       line-height: 1.6;
       color: var(--text);
       background: var(--cream);
-      scroll-behavior: smooth;
       padding-bottom: 80px;
     }
+
+    html { scroll-behavior: smooth; }
 
     img { max-width: 100%; height: auto; display: block; }
 
@@ -382,6 +389,7 @@
     <a href="index.html">← Home</a>
     <a href="tree-removal.html">Tree Removal</a>
     <a href="tree-trimming.html" class="active">Tree Trimming</a>
+    <a href="storm-cleanup.html">Storm Cleanup</a>
     <a href="https://g.page/r/CSYxgmi_XoQSEBM/review" target="_blank" rel="noopener">Google Reviews</a>
   </nav>
 
@@ -393,7 +401,8 @@
 
   <div class="container">
 
-    <img src="TreePics2.jpg" class="hero-photo" alt="Precision tree trimming and pruning by John's B.M.B Tree Service">
+    <!-- IMAGE INLINED HERE -->
+    <img src="REPLACE_WITH_BASE64_FOR_PHOTO1" class="hero-photo" fetchpriority="high" alt="Precision tree trimming and pruning by John's B.M.B Tree Service">
 
     <div class="card" style="text-align: center;">
       <p style="font-size: 1.15rem; font-weight: 600; color: var(--green-dark); margin-bottom: 0.9rem;">
@@ -536,8 +545,74 @@
           <textarea id="q-msg" name="message" rows="3" placeholder="Tell us which trees need trimming, roof clearance needed, or storm prep goals..."></textarea>
         </div>
         <div class="full">
-          <label for="q-photo">Optional Photo of the Tree / Job</label>
-          <input type="file" id="q-photo" name="attachment" accept="image/*">
+          <p style="font-size: 0.9rem;">Have photos? Tap <strong>Send via Text</strong> and attach them to your message.</p>
         </div>
         <div class="full" id="quote-feedback" aria-live="polite" style="display: none; font-size: 0.9rem; font-weight: 600; color: #b02a37; text-align: center;"></div>
-       
+        <div class="full" style="display: flex; flex-wrap: wrap; justify-content: center;">
+          <button type="submit" class="btn btn-gold" id="quote-submit">Send Request</button>
+          <button type="button" class="btn btn-sms" id="quote-sms">Send via Text</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    function $(id) { return document.getElementById(id); }
+    var panel = $('quote-panel'), backdrop = $('quote-backdrop'), form = $('quote-form'),
+        send = $('quote-submit'), feedback = $('quote-feedback'), opener;
+
+    function toggle(open) {
+      panel.classList.toggle('open', open);
+      backdrop.classList.toggle('open', open);
+      if (open) { opener = document.activeElement; $('q-name').focus(); }
+      else if (opener) { opener.focus(); }
+    }
+
+    ['open-panel-btn-1', 'open-panel-btn-2', 'open-panel-btn-sticky'].forEach(function (id) {
+      if ($(id)) $(id).addEventListener('click', function () { toggle(true); });
+    });
+    $('quote-close').addEventListener('click', function () { toggle(false); });
+    backdrop.addEventListener('click', function () { toggle(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('open')) toggle(false);
+    });
+
+    $('quote-sms').addEventListener('click', function () {
+      var body = 'Quote request: ' + $('q-service').value +
+        '\nName: ' + $('q-name').value +
+        '\nCity: ' + $('q-city').value +
+        '\nDetails: ' + $('q-msg').value;
+      location.href = 'sms:2282133019?body=' + encodeURIComponent(body);
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      send.disabled = true;
+      send.textContent = 'Sending...';
+      feedback.style.display = 'none';
+
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.success) throw new Error('rejected');
+          form.reset();
+          toggle(false);
+          var thanks = $('anchor-thank-you');
+          thanks.style.display = 'block';
+          thanks.scrollIntoView({ behavior: 'smooth' });
+          gtag('event', 'generate_lead');
+        })
+        .catch(function () {
+          feedback.textContent = 'Your request did not send. Please call or text (228) 213-3019.';
+          feedback.style.display = 'block';
+        })
+        .finally(function () {
+          send.disabled = false;
+          send.textContent = 'Send Request';
+        });
+    });
+  })();
+  </script>
+</body>
+</html>
