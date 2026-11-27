@@ -419,4 +419,53 @@
     function $(id) { return document.getElementById(id); }
     var panel = $('quote-panel'), backdrop = $('quote-backdrop'), form = $('quote-form'),
         send = $('quote-submit'), feedback = $('quote-feedback'), opener;
-    functi
+        function toggle(open) {
+      panel.classList.toggle('open', open);
+      backdrop.classList.toggle('open', open);
+      if (open) { opener = document.activeElement; $('q-name').focus(); }
+      else if (opener) { opener.focus(); }
+    }
+    ['open-panel-btn-1', 'open-panel-btn-2', 'open-panel-btn-sticky'].forEach(function (id) {
+      if ($(id)) $(id).addEventListener('click', function () { toggle(true); });
+    });
+    $('quote-close').addEventListener('click', function () { toggle(false); });
+    backdrop.addEventListener('click', function () { toggle(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.classList.contains('open')) toggle(false);
+    });
+    $('quote-sms').addEventListener('click', function () {
+      var body = 'Quote request: ' + $('q-service').value +
+        '\nName: ' + $('q-name').value +
+        '\nCity: ' + $('q-city').value +
+        '\nDetails: ' + $('q-msg').value;
+      location.href = 'sms:2282133019?body=' + encodeURIComponent(body);
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      send.disabled = true;
+      send.textContent = 'Sending...';
+      feedback.style.display = 'none';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (!data.success) throw new Error('rejected');
+          form.reset();
+          toggle(false);
+          var thanks = $('anchor-thank-you');
+          thanks.style.display = 'block';
+          thanks.scrollIntoView({ behavior: 'smooth' });
+          gtag('event', 'generate_lead');
+        })
+        .catch(function () {
+          feedback.textContent = 'Your request did not send. Please call or text (228) 213-3019.';
+          feedback.style.display = 'block';
+        })
+        .finally(function () {
+          send.disabled = false;
+          send.textContent = 'Send Request';
+        });
+    });
+  })();
+  </script>
+</body>
+</html>
