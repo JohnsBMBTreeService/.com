@@ -10,7 +10,7 @@
   <meta name="keywords" content="tree removal Biloxi, tree removal Gulfport, hazardous tree removal Ocean Springs, pine tree removal MS Gulf Coast, oak tree removal Mississippi, veteran tree service">
   <meta name="author" content="John's B.M.B Tree Service">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://johnsbmbtreeservice.github.io/tree-removal.html">
+  <link rel="canonical" href="https://johnsbmbtreeservice.github.io/.com/tree-removal.html">
 
   <!-- Local SEO / Geo -->
   <meta name="geo.region" content="US-MS">
@@ -20,10 +20,10 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://johnsbmbtreeservice.github.io/tree-removal.html">
+  <meta property="og:url" content="https://johnsbmbtreeservice.github.io/.com/tree-removal.html">
   <meta property="og:title" content="Tree Removal MS Gulf Coast | John's B.M.B Tree Service">
   <meta property="og:description" content="Combat Veteran owned & operated heavy and hazardous tree removal across the Mississippi Gulf Coast to Hattiesburg. Free quotes & health evaluations.">
-  <meta property="og:image" content="https://johnsbmbtreeservice.github.io/TreePics1.jpg">
+  <meta property="og:image" content="https://johnsbmbtreeservice.github.io/.com/TreePics3.jpg">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="John's B.M.B Tree Service">
 
@@ -32,12 +32,18 @@
   <meta name="format-detection" content="telephone=yes">
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJGDVFMMS9"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-LJGDVFMMS9');
+    // Load Analytics only after the page itself has finished loading
+    addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-LJGDVFMMS9';
+      s.async = true;
+      document.head.appendChild(s);
+    });
   </script>
 
   <!-- Service Schema -->
@@ -50,8 +56,8 @@
       "@type": "LocalBusiness",
       "name": "John's B.M.B Tree Service",
       "telephone": "+12282133019",
-      "url": "https://johnsbmbtreeservice.github.io/",
-      "image": "https://johnsbmbtreeservice.github.io/StickAxe420.png",
+      "url": "https://johnsbmbtreeservice.github.io/.com/",
+      "image": "https://johnsbmbtreeservice.github.io/.com/StickAxe420.png",
       "hasMap": "https://maps.app.goo.gl/CYaVGzynm6Sop4fS8"
     },
     "areaServed": [
@@ -81,9 +87,10 @@
       line-height: 1.6;
       color: var(--text);
       background: var(--cream);
-      scroll-behavior: smooth;
       padding-bottom: 80px;
     }
+
+    html { scroll-behavior: smooth; }
 
     img { max-width: 100%; height: auto; display: block; }
 
@@ -394,7 +401,8 @@
 
   <div class="container">
 
-    <img src="TreePics1.jpg" class="hero-photo" alt="Safe tree removal work by John's B.M.B Tree Service on the Mississippi Gulf Coast">
+    <!-- IMAGE INLINED HERE -->
+    <img src="REPLACE_WITH_BASE64_FOR_PHOTO3" class="hero-photo" fetchpriority="high" alt="Safe tree removal work by John's B.M.B Tree Service on the Mississippi Gulf Coast">
 
     <div class="card" style="text-align: center;">
       <p style="font-size: 1.15rem; font-weight: 600; color: var(--green-dark); margin-bottom: 0.9rem;">
@@ -540,112 +548,4 @@
             <option value="Storm Damage">Storm Damage Cleanup</option>
             <option value="Health Assessment">Free Tree Health Evaluation</option>
             <option value="Other">Other / Not Sure</option>
-          </select>
-        </div>
-        <div class="full">
-          <label for="q-msg">Project Details / Notes</label>
-          <textarea id="q-msg" name="message" rows="3" placeholder="Tell us about the tree(s), location near house/lines, or access..."></textarea>
-        </div>
-        <div class="full">
-          <label for="q-photo">Optional Photo of the Tree / Job</label>
-          <input type="file" id="q-photo" name="attachment" accept="image/*">
-        </div>
-        <div class="full" id="quote-feedback" aria-live="polite" style="display: none; font-size: 0.9rem; font-weight: 600; color: #b02a37; text-align: center;"></div>
-        <div class="full" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
-          <button type="submit" class="btn" id="quote-submit-btn" style="flex: 1; margin: 0;">Send Email Request</button>
-          <button type="button" class="btn btn-sms" id="sms-btn" style="flex: 1; margin: 0;">💬 Send via Text</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const panel = document.getElementById('quote-panel');
-    const backdrop = document.getElementById('quote-backdrop');
-    const openBtns = [
-      document.getElementById('open-panel-btn-1'),
-      document.getElementById('open-panel-btn-2'),
-      document.getElementById('open-panel-btn-sticky')
-    ];
-    const closeBtn = document.getElementById('quote-close');
-
-    function openPanel() {
-      panel.classList.add('open');
-      backdrop.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('q-name').focus();
-    }
-    function closePanel() {
-      panel.classList.remove('open');
-      backdrop.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    openBtns.forEach(btn => btn && btn.addEventListener('click', openPanel));
-    closeBtn.addEventListener('click', closePanel);
-    backdrop.addEventListener('click', closePanel);
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
-    });
-
-    document.getElementById('sms-btn').addEventListener('click', () => {
-      const name = document.getElementById('q-name').value.trim();
-      const phone = document.getElementById('q-phone').value.trim();
-      const city = document.getElementById('q-city').value.trim();
-      const service = document.getElementById('q-service').value;
-      const msg = document.getElementById('q-msg').value.trim();
-
-      if (!name || !phone || !city || !service) {
-        alert('Please fill in Name, Phone, City, and Service before sending a text.');
-        return;
-      }
-
-      const body = `Hi, I'd like a free quote.\nName: ${name}\nPhone: ${phone}\nCity: ${city}\nService: ${service}${msg ? '\nDetails: ' + msg : ''}`;
-      window.location.href = `sms:2282133019?body=${encodeURIComponent(body)}`;
-    });
-
-    (function() {
-      const quoteForm = document.getElementById('quote-form');
-      const btn = document.getElementById('quote-submit-btn');
-      const feedbackEl = document.getElementById('quote-feedback');
-      if (!quoteForm || !btn) return;
-
-      const defaultBtnText = btn.textContent;
-
-      quoteForm.addEventListener('submit', function(e) {
-        if (!window.fetch || !window.FormData) {
-          btn.disabled = true;
-          btn.textContent = 'Sending…';
-          return;
-        }
-
-        e.preventDefault();
-        feedbackEl.style.display = 'none';
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
-
-        fetch(quoteForm.action, {
-          method: 'POST',
-          body: new FormData(quoteForm)
-        })
-          .then(function(res) {
-            if (!res.ok) throw new Error('Failed');
-            quoteForm.reset();
-            closePanel();
-            const ty = document.getElementById('anchor-thank-you');
-            ty.style.display = 'block';
-            setTimeout(() => ty.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
-          })
-          .catch(function() {
-            feedbackEl.textContent = 'Could not send online. Please call or text (228) 213-3019.';
-            feedbackEl.style.display = 'block';
-          })
-          .finally(function() {
-            btn.disabled = false;
-            btn.textContent = defaultBtnText;
-          });
-      });
-    })();
-  </script>
-</body>
-</html>
+    
